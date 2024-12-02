@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import Logo from "./Logo";
 import Search from "./Search";
 import Sidebar from "./Sidebar";
-import SideBarLoading from "./sideBarLoading";
+import SideBarLoading from "./SideBarLoading";
 
 const Header = ({ docs }) => {
   return (
