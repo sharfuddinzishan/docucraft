@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import Logo from "./Logo";
 import Search from "./Search";
 import Sidebar from "./Sidebar";
+import SideBarLoading from "./sideBarLoading";
 
 const Header = ({ docs }) => {
   return (
@@ -17,10 +19,12 @@ const Header = ({ docs }) => {
         >
           <div className="container flex h-14 items-center justify-between gap-12">
             <div className="absolute inset-x-0 top-full h-px bg-zinc-900/7.5 transition dark:bg-white/7.5"></div>
-            <Search />
+            <Search docs={docs} />
           </div>
         </div>
-        <Sidebar docs={docs} />
+        <Suspense fallback={<SideBarLoading />}>
+          <Sidebar docs={docs} />
+        </Suspense>
       </header>
     </>
   );
