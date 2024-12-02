@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./dist/*.{html,js}"],
+  darkMode: "class",
   theme: {
     fontSize: {
       "2xs": ["0.75rem", { lineHeight: "1.25rem" }],
@@ -46,8 +43,7 @@ module.exports = {
     },
   },
   plugins: [
-    require("daisyui"),
-    require("@tailwindcss/aspect-ratio"),
     require("@tailwindcss/typography"),
+    require("@tailwindcss/aspect-ratio"),
   ],
 };
