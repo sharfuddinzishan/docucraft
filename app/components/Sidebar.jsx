@@ -1,23 +1,22 @@
 "use client";
-import { filterDocs } from "@/lib/filterDocs";
+import { filterDocs } from "@/app/utils/filterDocs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Sidebar = ({ docs }) => {
   const getPath = usePathname();
+  // http://localhost:3000/tags/technology
   const paths = getPath?.split("/");
+  //   ['', 'tags', 'technology']
   const validSubPaths = ["tags", "category", "author"];
-  const getSearchField = validSubPaths.includes(paths[1]) ? paths[1] : null;
+
+  const getSubPath = validSubPaths.includes(paths[1]) ? paths[1] : null;
 
   const finalDocs = [...docs];
-  const currentPath = validSubPaths.includes(paths?.[1])
-    ? decodeURIComponent(paths?.[2] || "")
+  const queryPath = validSubPaths.includes(paths?.at(1))
+    ? decodeURIComponent(paths?.at(2) || "")
     : null;
-  const { roots, nonRoots } = filterDocs(
-    finalDocs,
-    currentPath,
-    getSearchField
-  );
+  const { roots, nonRoots } = filterDocs(finalDocs, getSubPath, queryPath);
 
   return (
     <nav className="hidden lg:mt-10 lg:block">
